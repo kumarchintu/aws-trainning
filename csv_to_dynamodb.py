@@ -20,4 +20,4 @@ table=dynamodb.Table("emp_data")
 
 #Load the JSON object using put_item method
 for student in json_list:
-    table.put_item(Item=student)
+    table.put_item(Item=employee)
