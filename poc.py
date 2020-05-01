@@ -1,4 +1,4 @@
-import json 
+import json
 from boto3 import client
 from boto3 import resource
 

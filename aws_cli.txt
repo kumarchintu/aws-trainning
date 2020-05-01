@@ -1,0 +1,27 @@
+Create a key -pair file:
+	aws ec2 create-key-pair --key-name MyEc2Key --query 'KeyMaterial' --output text > MyEc2Key.pem
+
+See all the regions:
+	aws ec2 describe-regions --output table
+
+Create Group:
+	aws iam create-group --group-name MyAWSTrainingGroup
+	
+Create User:
+	aws iam create-user --user-name MyAWSTrainingUser
+
+Add user to group:
+	aws iam add-user-to-group --user-name MyAWSTrainingUser1 --group-name MyAWSTrainingGroup1
+
+Create Instance:
+	aws ec2 run-instances --image-id ami-0620d12a9cf777c87 --count 1 --instance-type t2.micro --key-name MyEc2Key
+		
+Create bucket:
+	aws s3 mb s3://aws-training-bucket-kumara5
+	
+Upload file to s3 bucket:
+	aws s3 cp "D:\aws trainning\AWS Training Sessions.docx" s3://aws-training-bucket-kumara5
+
+Download file from s3 bucket:
+	aws s3 cp "s3://aws-training-bucket-kumara5/AWS Training Sessions.docx" "D:\git"
+	

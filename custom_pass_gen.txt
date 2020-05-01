@@ -1,0 +1,52 @@
+#from tkinter import *
+#from random import *
+import string
+import random
+import tkinter as tk
+from tkinter import Label,Frame,Button,Entry,messagebox
+
+def generate_password():
+    pass_len=pass_entry.get()
+    pass_len=int(pass_len)
+    password = ''.join([random.choice(string.ascii_letters + string.digits + string.punctuation ) for n in range(pass_len)])
+    passText.delete(0,'end')
+    passText.insert(0,password)
+
+def check_digits():
+    if pass_entry.get().isdigit():
+        generate_password()
+    else:
+        messagebox.showwarning('Warning','Invalid Input. Please enter digit only!!!')
+        
+root = tk.Tk()
+root.resizable(0,0) #Disables maximize button
+root.wm_title("CSS Password Generator")
+topFrame = Frame(root)
+topFrame.pack()
+#root.geometry("350x250")
+
+pass_entry_label=Label(topFrame,text='Enter Password Length')
+pass_entry_label.grid(row=2,column=4)
+
+pass_entry_warning=Label(topFrame,text='***Digits only',fg='red')
+pass_entry_warning.grid(row=2,column=6)
+
+pass_entry=Entry(topFrame)
+pass_entry.grid(row=2,column=5)
+
+pass_lb=Label(topFrame,text='Password')
+pass_lb.grid(row=5,column=4)
+
+#Dubby label to increase frame zise at bottom
+dummy_lbl=Label(topFrame)
+dummy_lbl.grid(row=6,column=4)
+dummy_lbl1=Label(topFrame)
+dummy_lbl1.grid(row=7,column=4)
+
+passText = Entry(topFrame)
+passText.grid(row=5, column=5)
+
+genButton = Button(topFrame, text="Generate Password", fg='green', command=check_digits)
+genButton.grid(row=3, column=5)
+
+root.mainloop()
